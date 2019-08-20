@@ -1,0 +1,62 @@
+<div class="jumbotron container">
+<h1>RETURN PRODUCT</h1>
+<h3>Enter TransactionId to return product </h3>
+<form (ngSubmit)="searchTransactionAccount()">
+    <select (change)="onChange($event)">
+        <option value="select">Select</option>
+        <option *ngFor="let data of transactions" [value]="data">
+            {{data}}
+        </option>
+    </select>
+    
+
+
+
+    <div class="btn-group">
+        <button type="submit" class="btn btn-success">return</button>
+
+    </div>
+</form>
+<br>
+
+    <div *ngIf="status">
+
+    <table border="3" class="table table-striped">
+        <tr>
+        <th>Transaction status</th>
+        <th>Payment Mode</th>
+        <th> user firstname</th>
+        <th>User lastname</th>
+        <th> return status</th>
+        </tr>
+
+        <tr>
+            
+            <td>{{return.transaction.status}}</td>
+            <td>{{return.transaction.modeOfPurchase}}</td>
+            <td> {{return.transaction.user.firstName}}</td>
+            <td>{{return.transaction.user.lastName}}</td>
+            <td> {{return.returnStatus}}</td>
+        
+        </tr>
+    </table>
+   
+
+
+    <table border="3" class="table table-striped">
+        <tr>
+         <th>productid</th>
+          <th> product quantity</th>
+          <th> product price</th>      
+        </tr>
+     
+        <tr *ngFor="let pro of return.transaction.products ">
+                           <td>{{pro[0]}}</td>      
+                           <td>{{pro[1]}}</td> 
+                           <td>{{pro[2]}}</td> 
+        </tr>
+    </table>
+    <div class="alert alert-success" role="alert">Request For Return Accepted</div>
+</div>
+
+</div>
